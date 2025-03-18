@@ -1,0 +1,24 @@
+{
+    "nomeArquivo": "trabalhobio.pdf",
+    "caminho": "uploads\\18-03-2025_22-11-06\\trabalhobio.pdf",
+    "numeroArquivos": 5,
+    "dadosFormulario": {
+        "titulo": "nostrum quis quasi placeat",
+        "dataEntrega": "22-22-2222",
+        "observacoes": "ERFV",
+        "formato": "a3",
+        "corImpressao": "pb",
+        "impressao": "frente",
+        "gramatura": "75g",
+        "papelAdesivo": "sim",
+        "tipoAdesivo": "fosco",
+        "grampos": "nenhum",
+        "espiral": "sim",
+        "capaPVC": "sim",
+        "contato": {
+            "nome": "arthur dos reis gomcalves",
+            "email": "esterfonseca780@gmail.com"
+        }
+    },
+    "timestamp": "18-03-2025_22-11-06"
+}

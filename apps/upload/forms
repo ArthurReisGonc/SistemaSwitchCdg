@@ -1,0 +1,24 @@
+from django import forms
+
+class UploadFileForm(forms.Form):
+    titulo = forms.CharField(max_length=255)
+    dataEntrega = forms.CharField(max_length=10)
+    observacoes = forms.CharField(widget=forms.Textarea, required=False)
+    formato = forms.ChoiceField(choices=[('a3', 'A3'), ('a4', 'A4'), ('a5', 'A5')])
+    corImpressao = forms.ChoiceField(choices=[('pb', 'Preto e Branco'), ('colorido', 'Colorido')])
+    impressao = forms.ChoiceField(choices=[('frente', 'Só frente'), ('frenteVerso', 'Frente e Verso')])
+    gramatura = forms.ChoiceField(choices=[
+        ('75g', '75g (Padrão)'),
+        ('120g', '120g'),
+        ('180g', '180g'),
+        ('170g', 'COUCHÊ 170g (papel fotográfico)'),
+        ('250g', 'COUCHÊ 250g (papel fotográfico)'),
+    ])
+    papelAdesivo = forms.ChoiceField(choices=[('nao', 'Não'), ('sim', 'Sim')])
+    tipoAdesivo = forms.ChoiceField(choices=[('fosco', 'Fosco'), ('vinil', 'Vinil (brilhante)')], required=False)
+    grampos = forms.ChoiceField(choices=[('nenhum', 'Nenhum'), ('1', '1'), ('2', '2')])
+    espiral = forms.ChoiceField(choices=[('sim', 'Sim'), ('nao', 'Não')])
+    capaPVC = forms.ChoiceField(choices=[('sim', 'Sim'), ('nao', 'Não')])
+    nome = forms.CharField(max_length=255)
+    email = forms.EmailField()
+    file = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
