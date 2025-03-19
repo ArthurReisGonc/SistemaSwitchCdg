@@ -10,8 +10,18 @@
     <p>Esta é a página inicial do seu projeto.</p>
 
     <!-- Botão para redirecionar para a página de upload -->
-    <a href="{% url 'upload_file' %}">
+    <a href="{% url 'formulario_padrao' %}">
         <button>Ir para Upload</button>
+    </a>
+
+    <!-- Botão para redirecionar para o formulario rapido -->
+    <a href="{% url 'formulario_rapido' %}">
+        <button>Ir para formulario rapido</button>
+    </a>
+
+    <!-- Botão para redirecionar para o formulario completo -->
+    <a href="{% url 'formulario_completo' %}">
+        <button>Ir para formulario completo</button>
     </a>
 </body>
 </html>

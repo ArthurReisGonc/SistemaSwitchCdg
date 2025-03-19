@@ -1,0 +1,24 @@
+{
+    "nomeArquivo": "extrato-da-sua-conta-01JNMKMY2RTJSC0T2FK4VSYA8J_unlocked.pdf",
+    "caminho": "uploads\\19-03-2025_01-40-40\\extrato-da-sua-conta-01JNMKMY2RTJSC0T2FK4VSYA8J_unlocked.pdf",
+    "numeroArquivos": 6,
+    "dadosFormulario": {
+        "titulo": "nostrum quis quasi placeat",
+        "dataEntrega": "2025-03-20",
+        "observacoes": "",
+        "formato": "a4",
+        "corImpressao": "pb",
+        "impressao": "frente",
+        "gramatura": "75g",
+        "papelAdesivo": "sim",
+        "tipoAdesivo": "vinil",
+        "grampos": "nenhum",
+        "espiral": "sim",
+        "capaPVC": "sim",
+        "contato": {
+            "nome": "arthur dos reis gomcalves",
+            "email": "esterfonseca780@gmail.com"
+        }
+    },
+    "timestamp": "19-03-2025_01-40-40"
+}

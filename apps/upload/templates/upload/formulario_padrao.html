@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Moderno</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 200px;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .column {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .column:hover {
+            transform: scale(1.02);
+        }
+
+        h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input,
+        textarea,
+        button,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #007bff;
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border: 2px dashed #007bff;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .file-upload:hover {
+            background: #f0f8ff;
+        }
+
+        #fileList {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        #fileList li {
+            background: #e3e3e3;
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #fileList li button {
+            background: red;
+            color: white;
+            border: none;
+            padding: 3px 6px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="logo">
+        <img src="https://www.jotform.com/uploads/processoscasa/form_files/Logo_fundo%20transparente.624ad408221fd7.24388988.png"
+            alt="Logotipo">
+    </div>
+
+    <form id="uploadForm" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <div class="container">
+
+            <!-- Coluna 1: Upload de PDFs -->
+            <div class="column">
+                <h3>Upload de PDFs</h3>
+                <label class="file-upload">
+                    Clique para enviar PDF
+                    <input type="file" name="file" id="fileInput" accept=".pdf" multiple required>
+                </label>
+                <ul id="fileList"></ul>
+            </div>
+
+            <!-- Coluna 2: Informações do Trabalho -->
+            <div class="column">
+                <h3>Informações do Trabalho</h3>
+                <input type="text" name="titulo" placeholder="Título do material" required>
+                <label>Data de entrega na escola:</label>
+                <input type="text" name="dataEntrega" id="dataEntrega" placeholder="DD-MM-YYYY" maxlength="10" required>
+                <textarea name="observacoes" placeholder="Observações"></textarea>
+            </div>
+
+            <!-- Coluna 3: Especificações para Produção -->
+            <div class="column">
+                <h3>Especificações para Produção</h3>
+                <label>Formato Final:</label>
+                <select name="formato" required>
+                    <option value="a3">A3</option>
+                    <option value="a4">A4</option>
+                    <option value="a5">A5</option>
+                </select>
+
+                <label>Cor da Impressão:</label>
+                <select name="corImpressao" required>
+                    <option value="pb">Preto e Branco</option>
+                    <option value="colorido">Colorido</option>
+                </select>
+
+                <label>Impressão:</label>
+                <select name="impressao" required>
+                    <option value="frente">Só frente</option>
+                    <option value="frenteVerso">Frente e Verso</option>
+                </select>
+
+                <label>Gramatura:</label>
+                <select name="gramatura" required>
+                    <option value="75g">75g (Padrão)</option>
+                    <option value="120g">120g</option>
+                    <option value="180g">180g</option>
+                    <option value="170g">COUCHÊ 170g (papel fotográfico)</option>
+                    <option value="250g">COUCHÊ 250g (papel fotográfico)</option>
+                </select>
+
+                <label for="papelAdesivo">Papel Adesivo:</label>
+                <select name="papelAdesivo" id="papelAdesivo" required>
+                    <option value="nao">Não</option>
+                    <option value="sim">Sim</option>
+                </select>
+
+                <label for="tipoAdesivo" id="tipoAdesivoLabel">Tipo de Adesivo:</label>
+                <select name="tipoAdesivo" id="tipoAdesivo">
+                    <option value="fosco">Fosco</option>
+                    <option value="vinil">Vinil (brilhante)</option>
+                </select>
+
+                <label>Grampos:</label>
+                <select name="grampos" required>
+                    <option value="nenhum">Nenhum</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+
+                <label>Espiral:</label>
+                <select name="espiral" required>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+
+                <label>Capa e Contra capa em PVC:</label>
+                <select name="capaPVC" required>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+            </div>
+
+            <!-- Coluna 4: Dados de Contato -->
+            <div class="column">
+                <h3>Dados de Contato</h3>
+                <input type="text" name="nome" placeholder="Nome" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <button type="submit">Enviar</button>
+            </div>
+
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const papelAdesivoSelect = document.getElementById("papelAdesivo");
+            const tipoAdesivoLabel = document.getElementById("tipoAdesivoLabel");
+            const tipoAdesivoSelect = document.getElementById("tipoAdesivo");
+
+            function toggleTipoAdesivo() {
+                if (papelAdesivoSelect.value === "sim") {
+                    tipoAdesivoLabel.style.display = "block";
+                    tipoAdesivoSelect.style.display = "block";
+                } else {
+                    tipoAdesivoLabel.style.display = "none";
+                    tipoAdesivoSelect.style.display = "none";
+                }
+            }
+
+            papelAdesivoSelect.addEventListener("change", toggleTipoAdesivo);
+            toggleTipoAdesivo(); // Executa a verificação inicial ao carregar a página
+        });
+
+        document.getElementById("fileInput").addEventListener("change", function (event) {
+            const fileList = document.getElementById("fileList");
+            fileList.innerHTML = "";
+            const files = event.target.files;
+
+            for (let i = 0; i < files.length; i++) {
+                const li = document.createElement("li");
+                li.textContent = files[i].name;
+
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "✖";
+                removeButton.addEventListener("click", function () {
+                    const dataTransfer = new DataTransfer();
+                    for (let j = 0; j < files.length; j++) {
+                        if (j !== i) {
+                            dataTransfer.items.add(files[j]);
+                        }
+                    }
+                    event.target.files = dataTransfer.files;
+                    li.remove();
+                });
+
+                li.appendChild(removeButton);
+                fileList.appendChild(li);
+            }
+        });
+
+        document.getElementById("uploadForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const submitButton = document.querySelector("button[type='submit']");
+            submitButton.disabled = true;
+            submitButton.textContent = "Enviando...";
+
+            const formData = new FormData(this);
+
+            // Debug: Exibir os dados do FormData no console
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
+
+            try {
+                const response = await fetch("{% url 'formulario_padrao' %}", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "X-CSRFToken": "{{ csrf_token }}",
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error("Erro na requisição");
+                }
+
+                const result = await response.json();
+                alert(result.message);
+
+                // Recarrega a página após 5 segundos
+                setTimeout(() => {
+                    location.reload();
+                }, 5000); // Corrigido para 5 segundos
+
+            } catch (error) {
+                alert("Erro ao enviar os dados!");
+                console.error("Erro:", error);
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = "Enviar";
+            }
+        });
+
+        document.getElementById("dataEntrega").addEventListener("input", function (event) {
+            let value = event.target.value.replace(/\D/g, "");
+            if (value.length > 2) value = value.slice(0, 2) + "-" + value.slice(2);
+            if (value.length > 5) value = value.slice(0, 5) + "-" + value.slice(5, 9);
+            event.target.value = value;
+
+            // Validação da data
+            const datePattern = /^\d{2}-\d{2}-\d{4}$/;
+            if (!datePattern.test(value)) {
+                event.target.setCustomValidity("Formato de data inválido. Use DD-MM-YYYY.");
+            } else {
+                event.target.setCustomValidity("");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
