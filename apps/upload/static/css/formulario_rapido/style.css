@@ -1,7 +1,7 @@
 /* Reset e variáveis */
 :root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
+    --primary: #4361ee;
+    --primary-dark: #4361ee;
     --primary-light: #dbeafe;
     --success: #22c55e;
     --success-light: #dcfce7;
@@ -127,10 +127,8 @@ body {
     color: var(--gray-300);
     text-decoration: none;
     transition: var(--transition);
-    border-left: 3px solid transparent;
 }
 
-.sidebar-nav-link:hover, 
 .sidebar-nav-link.active {
     background-color: var(--gray-700);
     color: white;
@@ -665,4 +663,8 @@ select:invalid + .error-message {
     .sidebar-mobile-toggle {
         display: flex;
     }
+}
+
+#ip_excel{
+    background-color: rgba(0, 128, 0, 0.242);
 }

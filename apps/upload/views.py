@@ -5,6 +5,9 @@ from django.http import JsonResponse
 from django.utils import timezone
 from .forms import UploadFileForm
 from django.contrib import messages
+import pandas as pd
+from django.core.files.storage import FileSystemStorage
+
 
 
 def get_timestamp():
@@ -122,6 +125,8 @@ def formulario_rapido(request):
                     'nomeArquivo': file.name,
                     'caminho': file_path,
                     'numeroArquivos': len(files),
+                    'qtde': request.POST.get('qtde'),
+                    'nomeUnidade': request.POST.get('nomeUnidade'),
                     'dadosFormulario': {
                         'titulo': request.POST.get('titulo'),
                         'dataEntrega': request.POST.get('dataEntrega'),
@@ -165,7 +170,108 @@ def formulario_rapido(request):
 
     return render(request, 'upload/formulario_rapido.html', {'form': form})
 
+def formulario_rapido_excel(request):
+    print("Entrou na view formulario_rapido_excel")
+    if request.method == 'POST':
+        print("Recebendo um POST request...")
+        print("Dados do formulário (POST):", request.POST)
+        print("Arquivos enviados (FILES):", request.FILES)
 
+        form = UploadFileForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            print("Formulário válido:", form.cleaned_data)
+
+            files = request.FILES.getlist('file')
+            if not files:
+                print("Erro: Nenhum arquivo PDF enviado")
+                return JsonResponse({'error': 'Nenhum arquivo PDF enviado'}, status=400)
+
+            timestamp = get_timestamp()
+            upload_path = create_upload_directory(timestamp)
+            os.makedirs(upload_path, exist_ok=True)  # Garante que a pasta existe
+
+            excel_file = request.FILES.get("excel_file")
+            print("Arquivo Excel:", excel_file)
+            if not excel_file:
+                print("Erro: Nenhum arquivo Excel enviado")
+                return JsonResponse({'error': 'Nenhum arquivo Excel enviado'}, status=400)
+
+            # Salvando o arquivo Excel
+            excel_path = os.path.join(upload_path, excel_file.name)
+            with open(excel_path, 'wb+') as destination:
+                for chunk in excel_file.chunks():
+                    destination.write(chunk)
+
+            # Lendo o Excel
+            df = pd.read_excel(excel_path)
+            uploaded_files = []
+
+            for file in files:
+                # Salvar o PDF
+                pdf_path = os.path.join(upload_path, file.name)
+                with open(pdf_path, 'wb+') as destination:
+                    for chunk in file.chunks():
+                        destination.write(chunk)
+
+                uploaded_files.append(file.name)
+
+                # Nome do JSON baseado no nome do PDF
+                json_filename = os.path.splitext(file.name)[0] + ".json"
+                json_path = os.path.join(upload_path, json_filename)
+
+                json_data = {
+                    'nomeArquivo': file.name,
+                    'caminho': pdf_path,
+                    'numeroArquivos': len(files),
+                    'qtde': df.iloc[11:38, 1:3].sum().sum() if len(df) > 11 and df.shape[1] > 1 else None,
+                    'nomeUnidade': request.POST.get('nomeUnidade'),
+                    'dadosFormulario': {
+                        'titulo': request.POST.get('titulo'),
+                        'dataEntrega': request.POST.get('dataEntrega'),
+                        'observacoes': request.POST.get('observacoes'),
+                        'formato': df.iloc[1, 2] if len(df) > 1 and df.shape[1] > 2 else None,
+                        'corImpressao': df.iloc[2, 2] if len(df) > 2 and df.shape[1] > 2 else None,
+                        'impressao': df.iloc[3, 2] if len(df) > 3 and df.shape[1] > 2 else None,
+                        'gramatura': df.iloc[4, 2] if len(df) > 4 and df.shape[1] > 2 else None,
+                        'papelAdesivo': df.iloc[5, 2] if len(df) > 5 and df.shape[1] > 2 else None,
+                        'tipoAdesivo': 'Não',
+                        'grampos': df.iloc[6, 2] if len(df) > 6 and df.shape[1] > 2 else None,
+                        'espiral': df.iloc[7, 2] if len(df) > 7 and df.shape[1] > 2 else None,
+                        'capaPVC': df.iloc[8, 2] if len(df) > 8 and df.shape[1] > 2 else None,
+                        'contato': {
+                            'nome': request.POST.get('nome'),
+                            'email': request.POST.get('email'),
+                        }
+                    },
+                    'timestamp': timestamp
+                }
+
+                # Criando JSON correspondente ao PDF
+                with open(json_path, 'w', encoding='utf-8') as json_file:
+                    json.dump(json_data, json_file, ensure_ascii=False, indent=4)
+
+            print(f"Upload concluído! {len(uploaded_files)} arquivos salvos.")
+
+            return JsonResponse({
+                'message': 'Upload concluído com sucesso!',
+                'arquivos': uploaded_files,
+                'numeroArquivos': len(uploaded_files)
+            })
+
+        else:
+            print("Erros no formulário:", form.errors)
+            return JsonResponse({'error': 'Formulário inválido', 'details': form.errors}, status=400)
+
+    else:
+        form = UploadFileForm()
+
+    return render(request, 'upload_excel/formulario_rapido_excel.html', {'form': form})
 
 def formulario_completo(request):
-    return render(request, 'upload/formulario_completo.html')
+    print("Entrou na view formulario_completo")
+
+    
+
+
+

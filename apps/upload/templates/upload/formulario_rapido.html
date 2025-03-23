@@ -19,7 +19,7 @@
             <form id="formulario_rapido" class="form-container" enctype="multipart/form-data" method="post">
                 {% csrf_token %}
                 <div class="form-header">
-                    <h1>Formulário de Pedido de Produção</h1>
+                    <h1>Formulário rápido de Pedido de Produção</h1>
                     <p>Preencha os detalhes abaixo para solicitar a produção do seu material</p>
                 </div>
 
@@ -40,6 +40,11 @@
                                 <input type="file" name="file" id="fileInput" accept=".pdf" multiple required>
 
                             <span class="error-message">Pelo menos um arquivo PDF é obrigatório</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="qtde">Quantidade</label>
+                            <input type="text" id="qtde" name="qtde" placeholder="Ex: 23" required>
+                            <span class="error-message">Este campo é obrigatório</span>
                         </div>
                         
                         <ul class="file-list" id="fileList">
@@ -62,6 +67,12 @@
                             <input type="date" id="dataEntrega" name="dataEntrega" required>
                             <span class="error-message">Selecione uma data válida</span>
                         </div>
+
+                        <div class="form-group">
+                            <label for="nomeUnidade">Nome da unidade</label>
+                            <input type="text" placeholder="Ex: Bangu" id="nomeUnidade" name="nomeUnidade" required>
+                            <span class="error-message">Selecione uma data válida</span>
+                        </div>
                         
                         <div class="form-group">
                             <label for="observacoes">Observações</label>
@@ -76,10 +87,7 @@
                         <div class="form-group">
                             <label for="formato">Formato Final</label>
                             <select id="formato" name="formato" required>
-                                <option value="" disabled selected>Selecione o formato</option>
-                                <option value="a3">A3</option>
                                 <option value="a4">A4</option>
-                                <option value="a5">A5</option>
                             </select>
                             <span class="error-message">Selecione uma opção</span>
                         </div>
@@ -87,9 +95,7 @@
                         <div class="form-group">
                             <label for="corImpressao">Cor da Impressão</label>
                             <select id="corImpressao" name="corImpressao" required>
-                                <option value="" disabled selected>Selecione a cor</option>
                                 <option value="pb">Preto e Branco</option>
-                                <option value="colorido">Colorido</option>
                             </select>
                             <span class="error-message">Selecione uma opção</span>
                         </div>
@@ -107,12 +113,7 @@
                         <div class="form-group">
                             <label for="gramatura">Gramatura</label>
                             <select id="gramatura" name="gramatura" required>
-                                <option value="" disabled selected>Selecione a gramatura</option>
                                 <option value="75g">75g (Padrão)</option>
-                                <option value="120g">120g</option>
-                                <option value="180g">180g</option>
-                                <option value="170g">COUCHÊ 170g (papel fotográfico)</option>
-                                <option value="250g">COUCHÊ 250g (papel fotográfico)</option>
                             </select>
                             <span class="error-message">Selecione uma opção</span>
                         </div>
@@ -125,9 +126,7 @@
                         <div class="form-group">
                             <label for="papelAdesivo">Papel Adesivo</label>
                             <select id="papelAdesivo" name="papelAdesivo" required>
-                                <option value="" disabled selected>Selecione uma opção</option>
                                 <option value="nao">Não</option>
-                                <option value="sim">Sim</option>
                             </select>
                             <span class="error-message">Selecione uma opção</span>
                         </div>
@@ -154,8 +153,6 @@
                         <div class="form-group">
                             <label for="espiral">Espiral</label>
                             <select id="espiral" name="espiral" required>
-                                <option value="" disabled selected>Selecione uma opção</option>
-                                <option value="sim">Sim</option>
                                 <option value="nao">Não</option>
                             </select>
                             <span class="error-message">Selecione uma opção</span>

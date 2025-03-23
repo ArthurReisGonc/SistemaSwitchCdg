@@ -39,13 +39,20 @@
                 
                 // Obter o ID da seção alvo
                 const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                // Rolar suavemente até a seção
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
+        
+                // Verifica se o targetId é um ID de seção (começa com #)
+                if (targetId.startsWith("#")) {
+                    const targetSection = document.querySelector(targetId);
+        
+                    // Rolar suavemente até a seção
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                } else {
+                    // Se não for um ID válido, apenas segue o link normal
+                    window.location.href = targetId;
                 }
-                
+        
                 // Fechar sidebar no mobile após clicar em um link
                 if (window.innerWidth < 1024) {
                     sidebar.classList.remove('active');
@@ -53,6 +60,7 @@
                 }
             });
         });
+        
         
         // Destacar link ativo com base na posição de rolagem
         function highlightActiveSection() {
@@ -92,3 +100,6 @@
         window.addEventListener('resize', checkScreenSize);
         checkScreenSize();
     });
+
+    
+    

@@ -1,27 +1,87 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Django Application</title>
+    <link rel="stylesheet" href="{% static 'css/home/style.css' %}">
 </head>
 <body>
-    <h1>Bem-vindo à Página Inicial</h1>
-    <p>Esta é a página inicial do seu projeto.</p>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Django App</div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#nav-buttons">Forms</a></li>
+                    <li><a href="#contact-form-section">Contact</a></li>
+                    <li><a href="#register-form-section">Register</a></li>
+                    <li><a href="#newsletter-form-section">Newsletter</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <!-- Botão para redirecionar para a página de upload -->
-    <a href="{% url 'formulario_padrao' %}">
-        <button>Ir para Upload</button>
-    </a>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bem-vindo ao Formulario App</h1>
+                <p>A powerful platform designed to streamline your workflow and enhance productivity. Explore our features and get started today with our intuitive forms and services.</p>
+                <a href="#nav-buttons" class="btn btn-primary btn-lg">Começar</a>
+            </div>
+        </div>
+    </section>
 
-    <!-- Botão para redirecionar para o formulario rapido -->
-    <a href="{% url 'formulario_rapido' %}">
-        <button>Ir para formulario rapido</button>
-    </a>
+    <!-- Navigation Buttons Section -->
+    <section id="nav-buttons" class="nav-buttons-section">
+        <div class="container">
+            <h2 class="section-title">Formulários</h2>
+            <div class="nav-buttons-container">
+                <a href="{% url 'formulario_rapido' %}" class="nav-button" id="contact-nav-btn">
+                    <div class="nav-button-icon">✉️</div>
+                    <h3>Formulário Rápido</h3>
+                    <p>Have questions or need assistance? Our team is ready to help you with any inquiries you might have.</p>
+                    <button class="btn btn-primary" >Começar</button>
+                </a>
+                <a href="#register-form-section" class="nav-button" id="register-nav-btn">
+                    <div class="nav-button-icon">👤</div>
+                    <h3>Register Account</h3>
+                    <p>Join our community today and get access to exclusive features, personalized content, and more.</p>
+                    <button class="btn btn-success">Go to Registration</button>
+                </a>
+                <a href="#newsletter-form-section" class="nav-button" id="newsletter-nav-btn">
+                    <div class="nav-button-icon">📰</div>
+                    <h3>Subscribe</h3>
+                    <p>Stay updated with our latest news, offers, and updates delivered directly to your inbox.</p>
+                    <button class="btn btn-secondary">Go to Newsletter</button>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <!-- Botão para redirecionar para o formulario completo -->
-    <a href="{% url 'formulario_completo' %}">
-        <button>Ir para formulario completo</button>
-    </a>
+    
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Django Application. All rights reserved.</p>
+                <ul class="social-links">
+                    <li><a href="#"><i>Facebook</i></a></li>
+                    <li><a href="#"><i>Twitter</i></a></li>
+                    <li><a href="#"><i>Instagram</i></a></li>
+                    <li><a href="#"><i>LinkedIn</i></a></li>
+                </ul>
+                <p>Designed with ❤️ by Your Company</p>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'js/home/script.js' %}"></script>
+
 </body>
 </html>
