@@ -119,14 +119,42 @@ def formulario_rapido(request):
                         destination.write(chunk)
 
                 uploaded_files.append(file.name)
-
+            
                 # Criar e salvar os metadados do upload em um JSON
                 json_data = {
                     'nomeArquivo': file.name,
                     'caminho': file_path,
                     'numeroArquivos': len(files),
-                    'qtde': request.POST.get('qtde'),
-                    'nomeUnidade': request.POST.get('nomeUnidade'),
+                    'qtde': int(request.POST.get('qtde', 0) or 0),
+                    'nomeUnidade': {
+                            'ARARUAMA': int(request.POST.get('ARARUAMA', 0) or 0),
+                            'CABO_FRIO': int(request.POST.get('CABO_FRIO', 0) or 0),
+                            'ITABORAI': int(request.POST.get('ITABORAI', 0) or 0),
+                            'ITAIPUACU': int(request.POST.get('ITAIPUACU', 0) or 0),
+                            'MARICA_I': int(request.POST.get('MARICA_I', 0) or 0),
+                            'NOVA_FRIBURGO': int(request.POST.get('NOVA_FRIBURGO', 0) or 0),
+                            'QUEIMADOS': int(request.POST.get('QUEIMADOS', 0) or 0),
+                            'SEROPEDICA': int(request.POST.get('SEROPEDICA', 0) or 0),
+                            'ALCANTARA': int(request.POST.get('ALCANTARA', 0) or 0),
+                            'BANGU': int(request.POST.get('BANGU', 0) or 0),
+                            'BARRA_DA_TIJUCA': int(request.POST.get('BARRA_DA_TIJUCA', 0) or 0),
+                            'BELFORD_ROXO': int(request.POST.get('BELFORD_ROXO', 0) or 0),
+                            'DUQUE_DE_CAXIAS': int(request.POST.get('DUQUE_DE_CAXIAS', 0) or 0),
+                            'ICARAI': int(request.POST.get('ICARAI', 0) or 0),
+                            'ILHA_DO_GOVERNADOR': int(request.POST.get('ILHA_DO_GOVERNADOR', 0) or 0),
+                            'ITAIPU': int(request.POST.get('ITAIPU', 0) or 0),
+                            'MADUREIRA': int(request.POST.get('MADUREIRA', 0) or 0),
+                            'MEIER': int(request.POST.get('MEIER', 0) or 0),
+                            'NILOPOLIS': int(request.POST.get('NILOPOLIS', 0) or 0),
+                            'NITEROI': int(request.POST.get('NITEROI', 0) or 0),
+                            'NOVA_IGUACU': int(request.POST.get('NOVA_IGUACU', 0) or 0),
+                            'OLARIA': int(request.POST.get('OLARIA', 0) or 0),
+                            'PRATA': int(request.POST.get('PRATA', 0) or 0),
+                            'SAO_GONCALO': int(request.POST.get('SAO_GONCALO', 0) or 0),
+                            'SAO_JOAO_DE_MERITI': int(request.POST.get('SAO_JOAO_DE_MERITI', 0) or 0),
+                            'VILA_ISABEL': int(request.POST.get('VILA_ISABEL', 0) or 0),
+                            'VILAR_DOS_TELES': int(request.POST.get('VILAR_DOS_TELES', 0) or 0),
+                    },
                     'dadosFormulario': {
                         'titulo': request.POST.get('titulo'),
                         'dataEntrega': request.POST.get('dataEntrega'),
@@ -135,10 +163,10 @@ def formulario_rapido(request):
                         'corImpressao': request.POST.get('corImpressao'),
                         'impressao': request.POST.get('impressao'),
                         'gramatura': request.POST.get('gramatura'),
-                        'papelAdesivo': request.POST.get('papelAdesivo'),
+                        'papelAdesivo': None,
                         'tipoAdesivo': request.POST.get('tipoAdesivo') if request.POST.get('papelAdesivo') == 'sim' else None,
                         'grampos': request.POST.get('grampos'),
-                        'espiral': request.POST.get('espiral'),
+                        'espiral': None,
                         'capaPVC': request.POST.get('capaPVC'),
                         'contato': {
                             'nome': request.POST.get('nome'),

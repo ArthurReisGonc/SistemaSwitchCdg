@@ -27,10 +27,12 @@
                     <!-- Coluna 1: Upload de PDFs -->
                     <div id="section-upload" class="form-section">
                         <h3>Upload de PDFs</h3>
-                        
+
                         <div class="form-group">
                             <label for="fileInput" class="file-upload">
-                                <svg class="file-upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="file-upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                     <polyline points="17 8 12 3 7 8"></polyline>
                                     <line x1="12" y1="3" x2="12" y2="15"></line>
@@ -39,14 +41,10 @@
                                 <span class="file-upload-subtext">Arraste arquivos ou clique para selecionar</span>
                                 <input type="file" name="file" id="fileInput" accept=".pdf" multiple required>
 
-                            <span class="error-message">Pelo menos um arquivo PDF é obrigatório</span>
+                                <span class="error-message">Pelo menos um arquivo PDF é obrigatório</span>
                         </div>
-                        <div class="form-group">
-                            <label for="qtde">Quantidade</label>
-                            <input type="text" id="qtde" name="qtde" placeholder="Ex: 23" required>
-                            <span class="error-message">Este campo é obrigatório</span>
-                        </div>
-                        
+
+
                         <ul class="file-list" id="fileList">
                             <!-- Os arquivos selecionados aparecerão aqui -->
                         </ul>
@@ -55,13 +53,14 @@
                     <!-- Coluna 2: Informações do Trabalho -->
                     <div id="section-info" class="form-section">
                         <h3>Informações do Trabalho</h3>
-                        
+
                         <div class="form-group">
                             <label for="titulo">Título do material</label>
-                            <input type="text" id="titulo" name="titulo" placeholder="Ex: Apostila de Matemática" required>
+                            <input type="text" id="titulo" name="titulo" placeholder="Ex: Apostila de Matemática"
+                                required>
                             <span class="error-message">Este campo é obrigatório</span>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="dataEntrega">Data de entrega na escola</label>
                             <input type="date" id="dataEntrega" name="dataEntrega" required>
@@ -69,21 +68,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="nomeUnidade">Nome da unidade</label>
-                            <input type="text" placeholder="Ex: Bangu" id="nomeUnidade" name="nomeUnidade" required>
-                            <span class="error-message">Selecione uma data válida</span>
-                        </div>
-                        
-                        <div class="form-group">
                             <label for="observacoes">Observações</label>
-                            <textarea id="observacoes" name="observacoes" placeholder="Informações adicionais sobre o trabalho"></textarea>
+                            <textarea id="observacoes" name="observacoes"
+                                placeholder="Informações adicionais sobre o trabalho"></textarea>
                         </div>
                     </div>
 
                     <!-- Coluna 3: Especificações para Produção -->
                     <div id="section-specs" class="form-section">
                         <h3>Especificações para Produção</h3>
-                        
+
                         <div class="form-group">
                             <label for="formato">Formato Final</label>
                             <select id="formato" name="formato" required>
@@ -91,7 +85,7 @@
                             </select>
                             <span class="error-message">Selecione uma opção</span>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="corImpressao">Cor da Impressão</label>
                             <select id="corImpressao" name="corImpressao" required>
@@ -99,7 +93,7 @@
                             </select>
                             <span class="error-message">Selecione uma opção</span>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="impressao">Impressão</label>
                             <select id="impressao" name="impressao" required>
@@ -109,7 +103,7 @@
                             </select>
                             <span class="error-message">Selecione uma opção</span>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="gramatura">Gramatura</label>
                             <select id="gramatura" name="gramatura" required>
@@ -117,28 +111,6 @@
                             </select>
                             <span class="error-message">Selecione uma opção</span>
                         </div>
-                    </div>
-
-                    <!-- Coluna 4: Opções Adicionais -->
-                    <div id="section-options" class="form-section">
-                        <h3>Opções Adicionais</h3>
-                        
-                        <div class="form-group">
-                            <label for="papelAdesivo">Papel Adesivo</label>
-                            <select id="papelAdesivo" name="papelAdesivo" required>
-                                <option value="nao">Não</option>
-                            </select>
-                            <span class="error-message">Selecione uma opção</span>
-                        </div>
-                        
-                        <div class="form-group" id="tipoAdesivoGroup" style="display: none;">
-                            <label for="tipoAdesivo">Tipo de Adesivo</label>
-                            <select id="tipoAdesivo" name="tipoAdesivo">
-                                <option value="fosco">Fosco</option>
-                                <option value="vinil">Vinil (brilhante)</option>
-                            </select>
-                        </div>
-                        
                         <div class="form-group">
                             <label for="grampos">Grampos</label>
                             <select id="grampos" name="grampos" required>
@@ -149,23 +121,131 @@
                             </select>
                             <span class="error-message">Selecione uma opção</span>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="espiral">Espiral</label>
-                            <select id="espiral" name="espiral" required>
-                                <option value="nao">Não</option>
-                            </select>
-                            <span class="error-message">Selecione uma opção</span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="capaPVC">Capa e Contra capa em PVC</label>
-                            <select id="capaPVC" name="capaPVC" required>
-                                <option value="" disabled selected>Selecione uma opção</option>
-                                <option value="sim">Sim</option>
-                                <option value="nao">Não</option>
-                            </select>
-                            <span class="error-message">Selecione uma opção</span>
+                    </div>
+
+
+                    <!-- Coluna 4: Escolas cadastradas -->
+                    <div id="section-options" class="form-section">
+                        <h3>Escolas cadastradas</h3>
+                        <div id="scroll-icon" class="scroll-icon">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Escola</th>
+                                        <th>Resposta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ARARUAMA </td>
+                                        <td><input type="number" name="ARARUAMA"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CABO_FRIO</td>
+                                        <td><input type="number" name="CABO_FRIO"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ITABORAI </td>
+                                        <td><input type="number" name="ITABORAI"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ITAIPUACU</td>
+                                        <td><input type="number" name="ITAIPUACU"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>MARICA_I </td>
+                                        <td><input type="number" name="MARICA_I"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>NOVA_FRIBURGO</td>
+                                        <td><input type="number" name="NOVA_FRIBURGO"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>QUEIMADOS</td>
+                                        <td><input type="number" name="QUEIMADOS"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>SEROPEDIC</td>
+                                        <td><input type="number" name="SEROPEDICA"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ALCANTARA</td>
+                                        <td><input type="number" name="ALCANTARA"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>BANGU</td>
+                                        <td><input type="number" name="BANGU"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>BARRA_DA_TIJU</td>
+                                        <td><input type="number" name="BARRA_DA_TIJUCA"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>BELFORD_ROXO </td>
+                                        <td><input type="number" name="BELFORD_ROXO"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>DUQUE_DE_CAXI</td>
+                                        <td><input type="number" name="DUQUE_DE_CAXIAS"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ICARA</td>
+                                        <td><input type="number" name="ICARAI"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ILHA_DO_GOVERNADO</td>
+                                        <td><input type="number" name="ILHA_DO_GOVERNADOR"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ITAIP</td>
+                                        <td><input type="number" name="ITAIPU"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>MADUREIRA</td>
+                                        <td><input type="number" name="MADUREIRA"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>MEIER</td>
+                                        <td><input type="number" name="MEIER"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>NILOPOLIS</td>
+                                        <td><input type="number" name="NILOPOLIS"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>NITER</td>
+                                        <td><input type="number" name="NITEROI"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>NOVA_IGUA</td>
+                                        <td><input type="number" name="NOVA_IGUACU"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>OLARI</td>
+                                        <td><input type="number" name="OLARIA"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>PRATA</td>
+                                        <td><input type="number" name="PRATA"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>SAO_GONCA</td>
+                                        <td><input type="number" name="SAO_GONCALO"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>SAO_JOAO_DE_MERIT</td>
+                                        <td><input type="number" name="SAO_JOAO_DE_MERITI"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>VILA_ISAB</td>
+                                        <td><input type="number" name="VILA_ISABEL"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>VILAR_DOS_TEL</td>
+                                        <td><input type="number" name="VILAR_DOS_TELES"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -174,25 +254,27 @@
                 <div id="section-contact" class="form-footer">
                     <div class="contact-container">
                         <h3 class="text-center" style="margin-bottom: 1rem;">Dados de Contato</h3>
-                        
+
                         <div class="contact-grid">
                             <div class="form-group">
                                 <label for="nome">Nome</label>
                                 <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
                                 <span class="error-message">Este campo é obrigatório</span>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com"
+                                    required>
                                 <span class="error-message">Digite um email válido</span>
                             </div>
                         </div>
-                        
+
                         <div class="alert">
-                            Ao enviar este formulário, você concorda em ser contatado sobre seu pedido de produção de documentos.
+                            Ao enviar este formulário, você concorda em ser contatado sobre seu pedido de produção de
+                            documentos.
                         </div>
-                        
+
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-lg">Enviar Pedido</button>
                         </div>
@@ -208,4 +290,5 @@
 <script src="{% static 'js/formulario_rapido/sidebar.js' %}"></script>
 <script src="{% static 'js/formulario_rapido/modal.js' %}"></script>
 <script src="{% static 'js/formulario_rapido/script.js' %}"></script>
+
 </html>
